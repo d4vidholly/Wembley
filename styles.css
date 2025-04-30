@@ -1,0 +1,342 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+        background-image: url('wembley-dark.png');;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    :root {
+      --main-dark: #00061B;
+      --main-light: #011338;
+    }
+
+    .teams {
+        display: flex;
+        justify-content: space-between;
+      }
+      .team-panel {
+        width: 48%; /* Adjust width for both panels to fit side by side */
+        padding: 10px;
+        text-align: center;
+      }
+  
+  header {
+    background: var(--main-dark);
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .container {
+    margin: 65px auto;
+    padding: 40px;
+    max-width: 900px;
+    text-align: center;
+    
+  }
+  .match-area {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border-radius: 10px;
+    color: white;
+    font-style: bold;
+  }
+
+  .team-panel {
+    position: relative;
+    font-size: 14px;
+    background: linear-gradient(45deg, var(--main-dark), var(--main-light));
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    border: 5px solid #062151;
+    align-items: center;
+  
+    min-height: 300px; /* minimum size */
+
+  }
+  
+  /* checklist */
+  .key-player-checkbox, .key-player-checkbox-away {
+    border: 1px solid #062151;
+    width: 200px;
+    border-radius: 5px;
+    margin: none;
+  }
+
+  .banner {
+    height: 50px;
+    background-color: white;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center; /* Optional, to center the text */
+  }
+  
+  .team-panel img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  .team-panel select {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+.round-dropdown {
+  text-transform: uppercase;
+
+}
+
+  .round-select select {
+    padding: 10px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .round-select {
+    padding: 10px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .simulate-btn {
+    background: var(--main-dark);
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+  }
+
+  .simulate-btn:hover {
+    border: 3px solid white;
+  }
+
+  .match-details-money {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px; /* Space between the two items */
+  }
+  
+  .money-item {
+    display: flex;
+    flex-direction: column; /* Stack vertically inside each item */
+    align-items: center; /* Center the icon and text */
+    text-align: center;
+  }
+  
+  .icon {
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    margin-bottom: 10px; /* Space between icon and text */
+  }
+
+#ifDraw {
+  margin: 0;
+}
+
+  #teamBadgeAway, #teamBadgeHome  {
+    box-shadow: black;
+  }
+
+  .team-select  {
+    background-color: var(--main-dark);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 100px;
+    max-width: 100%;
+  }
+  
+  #teamSelectHome option {
+    height: 30px; /* Fixed height for options */
+    overflow-y: auto; /* Allows scrolling within options */
+    max-height: 200px; /* Max height for the dropdown list */
+  }
+
+  .option-list  {
+    display: none;
+  }
+
+
+  .round-dropdown {
+    background-color: var(--main-dark);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .Key-Player-Toggle  {
+    font-size: 12px;
+    margin: 0px;
+  }
+
+  .simulate-btn {
+    margin-top: 20px;
+  }
+
+  #kickOffTime  {
+    margin-top: 5px;
+  }
+
+  .icon {
+    margin-top: 25px;
+    margin-bottom: 5px;
+  }
+
+  #ifDrawContainer {
+    margin: none;
+  }
+
+  .match-details {
+    font-size: 12px;
+  }
+
+  .team-select:focus  {
+    border: none;
+  }
+
+  .fa-cup-logo  {
+    margin: 0;
+    max-height: 50px;
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    margin-left: -20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  
+  /* 6. Keep background color when selected (clicked) */
+input[type="checkbox"]:checked + label {
+    background-color: #062151;
+    padding: 5px 50px;
+    border-radius: 2px;
+  }
+
+  .hidden {
+    display: none !important;
+   }
+
+   #matchReportModal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(16px);
+
+}
+
+.modal-content {
+    max-width: 90%;
+    width: 800px;
+    background: linear-gradient(45deg, var(--main-dark), var(--main-light));
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+    box-sizing: border-box;
+    border: 5px solid #062151;
+}
+
+.content  {
+  justify-items: center;
+  align-items: center;
+}
+
+.match-result {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.home-result, .away-result  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-result .away-result p  {
+  margin-top: 10px;
+}
+
+#reportScore  {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#replayButton, #closeReport {
+  background-color: #011338;
+  color: white;
+  border: 2px solid #062151;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#replayButton:hover, #closeReport {
+  background-color: #062151;
+  color: white;
+  border: 2px solid #062151;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#reportRound  {
+  margin-top: 0px;
+}
+
+.result p {
+  font-weight: bold;
+  margin-top: 30px;
+  font-size: 18px;
+
+}
+
+#divisionTextHome, #divisionTextAway {
+  margin-bottom: 5px;
+}
+
+.international-stars {
+  font-weight: bold;
+}
