@@ -1,29 +1,50 @@
+hml body  {
+  margin: 0;
+  padding: 0;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-        background-image: url('wembley-dark.png');;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+    background-image: url('wembley-dark.png');;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     }
+
 
     :root {
       --main-dark: #00061B;
       --main-light: #011338;
     }
 
+ label {
+      cursor: pointer;
+    }
+
     .teams {
         display: flex;
         justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 10px;
       }
-      .team-panel {
-        width: 48%; /* Adjust width for both panels to fit side by side */
+
+      #starContainerHome, #starContainerAway  {
+        margin-bottom: 10px;
+      }
+
+    .team-panel {
+        width: 48%;
+        min-width: 200px;
         padding: 10px;
         text-align: center;
       }
   
   header {
-    background: var(--main-dark);
+    height: 40px;
+    backdrop-filter: blur(5px);
     padding: 20px;
     color: white;
     text-align: center;
@@ -31,13 +52,26 @@ body {
     font-weight: bold;
   }
 
+  header img  {
+    position: fixed;
+    right: 100px;
+    height: 30px;
+  }
+
+  header img:hover  {
+    cursor: pointer;
+  }
+
+
+
   .container {
     margin: 65px auto;
     padding: 40px;
     max-width: 900px;
+    min-width: 350px;
     text-align: center;
-    
   }
+
   .match-area {
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
@@ -49,24 +83,38 @@ body {
     border-radius: 10px;
     color: white;
     font-style: bold;
+
+    min-width: 300px;
   }
+
+
+
+
 
   .team-panel {
     position: relative;
-    font-size: 14px;
     background: linear-gradient(45deg, var(--main-dark), var(--main-light));
-    border-radius: 10px;
     padding: 20px;
-    width: 150px;
+    width: 32%;
+    min-width: 150px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center;
+
+
+    border-radius: 10px;
     border: 5px solid #062151;
+
+    font-size: 14px;
+    text-align: center;
     align-items: center;
-  
-    min-height: 300px; /* minimum size */
+    min-height: 300px;
 
   }
   
-  /* checklist */
   .key-player-checkbox, .key-player-checkbox-away {
     border: 1px solid #062151;
     width: 200px;
@@ -82,7 +130,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: center; /* Optional, to center the text */
+    text-align: center; 
   }
   
   .team-panel img {
@@ -99,11 +147,11 @@ body {
     padding: 10px;
     font-size: 14px;
     text-transform: uppercase;
+    margin-bottom: 10px;
   }
 
 .round-dropdown {
   text-transform: uppercase;
-
 }
 
   .round-select select {
@@ -113,6 +161,9 @@ body {
   }
 
   .round-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     font-weight: bold;
     margin: 0;
@@ -122,34 +173,37 @@ body {
     background: var(--main-dark);
     color: white;
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
-    cursor: not-allowed;
+    cursor: pointer;
   }
 
   .simulate-btn:hover {
-    border: 3px solid white;
+    background-color: white;
+    color: var(--main-dark);
+    border: 3px solid #062151;
   }
 
   .match-details-money {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 40px; /* Space between the two items */
+    gap: 40px;
   }
   
   .money-item {
     display: flex;
-    flex-direction: column; /* Stack vertically inside each item */
-    align-items: center; /* Center the icon and text */
+    flex-direction: column;
+    align-items: center; 
     text-align: center;
   }
   
   .icon {
-    width: 20px; /* Adjust size as needed */
+    width: 20px;
     height: 20px;
-    margin-bottom: 10px; /* Space between icon and text */
+    margin-bottom: 10px; 
   }
 
 #ifDraw {
@@ -174,13 +228,9 @@ body {
   }
   
   #teamSelectHome option {
-    height: 30px; /* Fixed height for options */
-    overflow-y: auto; /* Allows scrolling within options */
-    max-height: 200px; /* Max height for the dropdown list */
-  }
-
-  .option-list  {
-    display: none;
+    height: 30px;
+    overflow-y: auto; 
+    max-height: 200px; 
   }
 
 
@@ -240,7 +290,6 @@ body {
     cursor: pointer;
   }
   
-  /* 6. Keep background color when selected (clicked) */
 input[type="checkbox"]:checked + label {
     background-color: #062151;
     padding: 5px 50px;
@@ -288,6 +337,12 @@ input[type="checkbox"]:checked + label {
   gap: 80px;
 }
 
+.home-team-stars, .away-team-stars  {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+
 .home-result, .away-result  {
   display: flex;
   flex-direction: column;
@@ -333,10 +388,45 @@ input[type="checkbox"]:checked + label {
 
 }
 
+
+
 #divisionTextHome, #divisionTextAway {
   margin-bottom: 5px;
 }
 
 .international-stars {
   font-weight: bold;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+
+
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: 220px;
+  background-color: white;
+  color: var(--main-light);
+  text-align: left;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid #062151;
+  
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0px;
+  z-index: 100;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }

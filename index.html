@@ -11,22 +11,36 @@
 </head>
 <body>
 
+
+  <header div="">
+  Wembley Match Simulator
+  
+  <span div="tooltip">
+
+    <img class="" id="help-icon" src="icon-help.svg" alt="icon help" style="display: none;">
+
+  </span>
+
+  </header>
+
   <div id="matchSetupContainer">
 
   <div class="container">
+    
     <div class="match-area">
       
       <div class="teams">
+        
         <!-- Home Team Panel -->
         <div class="team-panel">
           <div>Home</div>
           <img id="teamBadgeHome" src="arsenal.svg" alt="Home Team Badge" width="100">
 
-          <div id="starContainerHome" style="display: none;"> <!-- League --></div>
-          <div id="divisionTextHome"></div> <!-- Division -->
+          <div id="starContainerHome" style="display: none;"></div>
+          <div id="divisionTextHome"></div>
 
           <select class="team-select" id="teamSelectHome">
-            <div class=".option-list">
+            <div class="option-list">
             <option value="Arsenal">Arsenal</option>
             <option value="Barnsley">Barnsley</option>
             <option value="Chelsea">Chelsea</option>
@@ -53,8 +67,19 @@
 
             <div class="key-player-checkbox" >
 
-              <div class="international-stars">
+              <div class="international-stars tooltip">
                 <p>Select International Stars:</p>
+                <span class="tooltip-text">International Stars can be added to your team to improve your odds.
+                  <br>
+                  <br>
+                  Goalkeeper: +1 Goal
+                  <br>
+                  Defender: +1 Goal
+                  <br>
+                  Midfielder: +1 Goal
+                  <br>
+                  Striker: +1 Goal
+                </span>
               </div>
 
               <div class="home-team-stars">
@@ -80,7 +105,7 @@
         
         <div class="match-details">
 
-          <img src="fa-cup-logo.svg" alt="FA Cup Logo" height="150" class="fa-cup-logo">
+          <img src="fa-cup-logo.svg" alt="FA Cup Logo" height="100" class="fa-cup-logo">
 
         <div class="round-select">
 
@@ -110,7 +135,7 @@
 
         <div class="money-item">
 
-          <img class="icon" id="ticket-icon" src="icon-ticket.svg" alt="icon ticket" width="20">
+          <img class="icon tooltip" id="ticket-icon" src="icon-ticket.svg" alt="icon ticket" width="20">
   
           <div id="prizeMoneyContainer">
             <p id="prizeMoney"></p>
@@ -120,7 +145,7 @@
 
         <div class="money-item">
 
-          <img class="icon" id="tv-icon" src="icon-tv.svg" alt="icon tv" width="20">  
+          <img class="icon tooltip" id="prize-icon" src="icon-prize.svg" alt="icon prize" width="20">  
 
         <div id="ticketRevenueContainer">
           <p id="ticketRevenue"></p>
@@ -175,14 +200,22 @@
 
           <div class="Key-Player-Toggle">
 
-
-
-          
             <div class="key-player-checkbox-away">
 
-              <div class="international-stars">
+              <div class="international-stars tooltip">
                 <p>Select International Stars:</p>
-              </div>
+                <span class="tooltip-text">International Stars can be added to your team to improve your odds.
+                  <br>
+                  <br>
+                  Goalkeeper: +1 Goal
+                  <br>
+                  Defender: +1 Goal
+                  <br>
+                  Midfielder: +1 Goal
+                  <br>
+                  Striker: +1 Goal
+                </span>
+                </div>
 
               <div class="away-team-stars">
 
@@ -289,9 +322,9 @@
     
     </h3>
     
-    <button id="closeReport" onclick="closeModal()">Close</button>
+    <button class="report-button" id="closeReport" onclick="closeModal()">NEW MATCH</button>
 
-    <button id="replayButton" class="hidden">REPLAY MATCH</button>
+    <button class="report-button" id="replayButton" class="hidden">REPLAY MATCH</button>
 
   </div>
 
@@ -328,7 +361,7 @@
           "Wolves": { badge: "wolves.svg", division: "Premier Division", stars: "★★★", stadium: "Molineux", gate: "$9000", location: "West Midlands" },
           "Newcastle": { badge: "newcastle.svg", division: "Championship", stars: "★★", stadium: "St James Park", gate: "$6000", location: "North East" },
           "Wimbledon": { badge: "wimbledon.svg", division: "Third Division", stars: "★", stadium: "Plough Lane", gate: "$2400", location: "London" },
-          "Tow Law": { badge: "tow-law.svg", division: "Non League", stars: "★", stadium: "Ironworks Road", gate: "$500", location: "North East" }
+          "Tow Law": { badge: "tow-law.svg", division: "Non League", stars: "★", stadium: "Ironworks Road", gate: "$900", location: "North East" }
         };
       
         teamSelectHome.addEventListener('change', updateHomeTeamUI);
@@ -358,7 +391,7 @@
       
           if (selectedRound === "Semi Final" || selectedRound === "Final") {
             stadiumTextHome.textContent = "Wembley";
-            prizeMoney.innerText = roundData[selectedRound].revenue; // Use revenue from roundData
+            prizeMoney.innerText = roundData[selectedRound].revenue;
           } else if (teams[selectedTeam]) {
             stadiumTextHome.textContent = teams[selectedTeam].stadium;
             prizeMoney.innerText = teams[selectedTeam].gate;
@@ -399,7 +432,6 @@ const ifDraw = document.getElementById('ifDraw');
 const kickOffTime = document.getElementById('kickOffTime');
 
 const roundData = {
-  "Third Round": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "15:00 - Day", stadium: ""},
   "Round of 32": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "15:00 - Day", stadium: ""},
   "Round of 16": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "19:45 - Night", stadium: ""},
   "Quarter Final": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "19:45 - Night", stadium: ""},
@@ -425,13 +457,13 @@ function updateRoundUI() {
           enableSimulateButton();
         }
 
-let isReplay = false; // Global replay status
+let isReplay = false;
 
 function parseStars(stars) {
-  // ...
 }
 
-// 1. ADD THIS FUNCTION NEAR THE TOP (utilities section is fine)
+//International Star probabilities
+
 function calculateBonus(team) {
   const container = document.querySelector(`.${team}-team-stars`);
   const checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
@@ -440,7 +472,6 @@ function calculateBonus(team) {
 
   checkboxes.forEach(cb => {
     if (cb.value === 'Goalkeeper' || cb.value === 'Defender' || cb.value === 'Midfielder' || cb.value === 'Striker') {
-      // Apply probability for each bonus
       const chance = Math.random();
       if (chance <= 1) {
         bonus += 1;
@@ -453,6 +484,7 @@ function calculateBonus(team) {
 
       
         // ---- INITIALIZE on page load ----
+        
 window.addEventListener('load', function () {
   updateHomeTeamUI();
   updateAwayTeamUI();
@@ -484,7 +516,7 @@ window.addEventListener('load', function () {
   const homeGoals = rollGoals(homeStars, 'home');
   const awayGoals = rollGoals(awayStars, 'away');
 
-  // ✅ NEW: Add bonus goals for international stars
+  // Add bonus goals for international stars
 
   const homeBonus = calculateBonus('home');
   const awayBonus = calculateBonus('away');
@@ -558,6 +590,9 @@ window.addEventListener('load', function () {
 function parseStars(starString) {
   return starString.replace(/[^★]/g, '').length; // Only count "★" symbols
 }
+
+
+// Add dice probability here
 
 const goalChancesByStars = {
 
@@ -686,52 +721,6 @@ function enableSimulateButton() {
 
 
 </script>
-      
-      <style>
-        .teams {
-          display: flex;
-          justify-content: space-between;
-          width: 100%; /* Ensure full width */
-          align-items: center; /* Vertically align items to the center */
-        }
-      
-        .team-panel {
-          width: 32%; /* Adjust width to fit Home and Away panels with space in between */
-          padding: 10px;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between; /* Ensure content is spaced out evenly */
-          height: 100%; /* Force panels to take full height of the parent */
-        }
-      
-        .round-select {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-      
-        }
-      
-        .team-panel img {
-          margin-bottom: 10px;
-        }
-      
-        .team-panel select,
-        .team-panel div {
-          margin-bottom: 10px;
-        }
-      
-      
-        #simulateButton {
-          padding: 10px;
-          cursor: pointer;
-          background-color: rgb(0, 6, 27) ;
-          font-weight: bold;
-          font-size: 24px;
-          padding: 15px 30px;
-        }
-
-        </style>
 
 </body>
 </html>
