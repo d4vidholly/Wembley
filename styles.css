@@ -1,11 +1,11 @@
-hml body  {
+html body  {
   margin: 0;
   padding: 0;
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     background-image: url('wembley-dark.png');;
     background-size: cover;
     background-position: center;
@@ -14,9 +14,12 @@ body {
     }
 
 
+
     :root {
       --main-dark: #00061B;
       --main-light: #011338;
+      --text-colour: white;
+
     }
 
  label {
@@ -46,7 +49,7 @@ body {
     height: 40px;
     backdrop-filter: blur(5px);
     padding: 20px;
-    color: white;
+    color: var(--text-colour);
     text-align: center;
     font-size: 24px;
     font-weight: bold;
@@ -73,15 +76,14 @@ body {
   }
 
   .match-area {
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     padding: 40px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 
     border-radius: 10px;
-    color: white;
+    color: var(--text-colour);
     font-style: bold;
 
     min-width: 300px;
@@ -124,8 +126,8 @@ body {
 
   .banner {
     height: 50px;
-    background-color: white;
-    color: black;
+
+    color: white;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -171,7 +173,7 @@ body {
   
   .simulate-btn {
     background: var(--main-dark);
-    color: white;
+    color: var(--text-colour);
     padding: 15px 30px;
     font-size: 24px;
     font-weight: bold;
@@ -181,7 +183,7 @@ body {
   }
 
   .simulate-btn:hover {
-    background-color: white;
+    background-color: var(--text-colour);
     color: var(--main-dark);
     border: 3px solid #062151;
   }
@@ -206,19 +208,19 @@ body {
     margin-bottom: 10px; 
   }
 
+  svg  {
+    fill: #00061B;
+  }
+
 #ifDraw {
   margin: 0;
 }
-
-  #teamBadgeAway, #teamBadgeHome  {
-    box-shadow: white;
-  }
 
   .team-select  {
     background-color: var(--main-dark);
     border: none;
     border-radius: 5px;
-    color: white;
+    color: var(--text-colour);
     font-weight: bold;
     font-size: 18px;
     text-align: center;
@@ -236,7 +238,7 @@ body {
 
   .round-dropdown {
     background-color: var(--main-dark);
-    color: white;
+    color: var(--text-colour);
     border: none;
     border-radius: 5px;
     font-weight: bold;
@@ -319,7 +321,7 @@ input[type="checkbox"]:checked + label {
     background: linear-gradient(45deg, var(--main-dark), var(--main-light));
     padding: 30px;
     border-radius: 10px;
-    color: white;
+    color: var(--text-colour);
     box-sizing: border-box;
     border: 5px solid #062151;
 }
@@ -343,6 +345,8 @@ input[type="checkbox"]:checked + label {
 }
 
 
+
+
 .home-result, .away-result  {
   display: flex;
   flex-direction: column;
@@ -361,7 +365,7 @@ input[type="checkbox"]:checked + label {
 
 #replayButton, #closeReport {
   background-color: #011338;
-  color: white;
+  color: var(--text-colour);
   border: 2px solid #062151;
   padding: 10px;
   border-radius: 5px;
@@ -370,7 +374,7 @@ input[type="checkbox"]:checked + label {
 
 #replayButton:hover, #closeReport {
   background-color: #062151;
-  color: white;
+  color: var(--text-colour);
   border: 2px solid #062151;
   padding: 10px;
   border-radius: 5px;
@@ -404,13 +408,16 @@ input[type="checkbox"]:checked + label {
   cursor: help;
 }
 
+.copyright  {
+  color: var(--text-colour);
+}
 
 
 .tooltip-text {
   visibility: hidden;
   opacity: 0;
   width: 220px;
-  background-color: white;
+  background-color: var(--text-colour);
   color: var(--main-light);
   text-align: left;
   padding: 8px;
@@ -424,6 +431,10 @@ input[type="checkbox"]:checked + label {
   left: 0;
   margin-top: 0px;
   z-index: 100;
+}
+
+footer  {
+  bottom: 0;
 }
 
 .tooltip:hover .tooltip-text {
