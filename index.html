@@ -313,7 +313,7 @@
 
   <div class="match-result">
 
-    <div id="ticketHome">
+    <div id="prizeHome">
       <p></p>
     </div>
     
@@ -321,8 +321,38 @@
       <img id="prize-icon" src="icon-prize.svg" alt="prize" width="20">
     </div>
 
-    <div id="ticketAway">
+    <div id="prizeAway">
       <p></p>
+    </div>
+  </div>
+
+  <div class="match-result">
+
+    <div id="tvHome">
+      <p></p>
+    </div>
+    
+    <div>
+      <img id="tv-icon" src="icon-tv.svg" alt="tv" width="20">
+    </div>
+
+    <div id="tvAway">
+      <p></p>
+    </div>
+  </div>
+
+  <div class="match-result">
+
+    <div id="totalHome">
+      <b><p></p></b>
+    </div>
+    
+    <div>
+      <b>Total</b>
+    </div>
+
+    <div id="totalAway">
+      <b><p></p></b>
     </div>
   </div>
 
@@ -360,7 +390,7 @@
         const prizeMoney = document.getElementById('prizeMoney');
       
         const teams = {
-          "Arsenal": { badge: "arsenal.svg", division: "Premier Division", stars: "★★★", stadium: "Emirates Stadium", gate: "$12000", location: "London" },
+          "Arsenal": { badge: "arsenal.svg", division: "Premier Division", stars: "★★★", stadium: "Emirates Stadium", gate: "$12000", location: "North London" },
           "Man City": { badge: "man-city.svg", division: "Premier Division", stars: "★★★", stadium: "Etihad Stadium", gate: "$12000", location: "North-West" },
           "Man Utd": { badge: "man-utd.svg", division: "Premier Division", stars: "★★★", stadium: "Old Trafford", gate: "$15000", location: "North-West" },
           "Liverpool": { badge: "liverpool.svg", division: "Premier Division", stars: "★★★", stadium: "Anfield", gate: "$15000", location: "North-West" },
@@ -378,7 +408,7 @@
           "Southend": { badge: "southend.svg", division: "Third Division", stars: "★", stadium: "Roots Hall", gate: "$1500", location: "London" },
           "Shrewsbury": { badge: "shrewsbury.svg", division: "Third Division", stars: "★", stadium: "King Power Stadium", gate: "$3000", location: "Midlands" },
           "Wrexham": { badge: "wrexham.svg", division: "League One", stars: "★★", stadium: "Racecourse Ground", gate: "$3000", location: "Wales" },
-          "Tottenham": { badge: "tottenham.svg", division: "Premier Division", stars: "★★★", stadium: "Tottenham Hotspur Stadium", gate: "$12000", location: "London" },
+          "Tottenham": { badge: "tottenham.svg", division: "Premier Division", stars: "★★★", stadium: "Tottenham Hotspur Stadium", gate: "$12000", location: "North London" },
           "Leeds Utd": { badge: "leeds.svg", division: "Premier Division", stars: "★★★", stadium: "Elland Road", gate: "$9000", location: "Yorkshire" },
           "Wolves": { badge: "wolves.svg", division: "Premier Division", stars: "★★★", stadium: "Molineux", gate: "$9000", location: "West Midlands" },
           "West Brom": { badge: "west-brom.svg", division: "Premier Division", stars: "★★★", stadium: "Hawthorns", gate: "$9000", location: "West Midlands" },
@@ -456,7 +486,7 @@ const ifDraw = document.getElementById('ifDraw');
 const kickOffTime = document.getElementById('kickOffTime');
 
 const roundData = {
-  "Round of 32": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "15:00 - Day", stadium: ""},
+  "Round of 32": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "15:00 - Day", stadium: "",},
   "Round of 16": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "19:45 - Night", stadium: ""},
   "Quarter Final": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "19:45 - Night", stadium: ""},
   "Semi Final": {revenue: "$30000", ifDraw: "Penalty Shoot Out if Draw", kickoff: "12:30 - Day", stadium: "Wembley"},
@@ -509,7 +539,7 @@ function calculateBonus(team) {
       
         // ---- INITIALIZE on page load ----
         
-window.addEventListener('load', function () {
+        window.addEventListener('load', function () {
   updateHomeTeamUI();
   updateAwayTeamUI();
   updateRoundUI();
@@ -521,99 +551,132 @@ window.addEventListener('load', function () {
   const closeBtn = document.getElementById('closeReport');
 
   simulateButton.addEventListener('click', () => {
-  const homeName = teamSelectHome.value;
-  const awayName = teamSelectAway.value;
-  const round = roundSelect.value;
+    const homeName = teamSelectHome.value;
+    const awayName = teamSelectAway.value;
+    const round = roundSelect.value;
 
-  if (homeName && awayName && homeName !== "Select Team" && awayName !== "Select Team") {
-    simulateMatch(homeName, awayName, round, isReplay);
-  }
-});
-
-  function simulateMatch(homeName, awayName, round, isReplay = false) {
-  const homeBadge = teams[homeName].badge;
-  const awayBadge = teams[awayName].badge;
-
-  const homeStars = parseStars(teams[homeName].stars);
-  const awayStars = parseStars(teams[awayName].stars);
-
-  const homeGoals = rollGoals(homeStars, 'home');
-  const awayGoals = rollGoals(awayStars, 'away');
-
-  // Add bonus goals for international stars
-
-  const homeBonus = calculateBonus('home');
-  const awayBonus = calculateBonus('away');
-
-  const finalHomeGoals = homeGoals + homeBonus;
-  const finalAwayGoals = awayGoals + awayBonus;
-
-  // Update match report UI
-  document.getElementById('reportRound').innerText = `FA Cup ${round}${isReplay ? ' Replay' : ''} Result`;
-  document.getElementById('reportHomeBadge').src = homeBadge;
-  document.getElementById('reportAwayBadge').src = awayBadge;
-  document.getElementById('reportHomeName').innerText = homeName.toUpperCase();
-  document.getElementById('reportAwayName').innerText = awayName.toUpperCase();
-  document.getElementById('reportScore').innerText = `${finalHomeGoals} - ${finalAwayGoals}`;
-
-  // Determine match result
-  let winnerKey;
-  let resultText;
-  const knockoutRounds = ['Semi Final', 'Final'];
-
-  if (finalHomeGoals > finalAwayGoals) {
-    winnerKey = "home";
-    resultText = `${homeName} progress to the next round`;
-  } else if (finalAwayGoals > finalHomeGoals) {
-    winnerKey = "away";
-    resultText = `${awayName} progress to the next round`;
-  } else {
-    if (knockoutRounds.includes(round) || isReplay) {
-      const winner = Math.random() < 0.5 ? homeName : awayName;
-      winnerKey = (winner === homeName) ? "home" : "away";
-      resultText = `End of 90 minutes – ${winner} win on penalties${isReplay ? '' : ''}`;
-    } else {
-      winnerKey = "draw";
-      resultText = `Match Drawn – Replay Scheduled`;
-      showReplayButton(homeName, awayName, round);
+    if (homeName && awayName && homeName !== "Select Team" && awayName !== "Select Team") {
+      simulateMatch(homeName, awayName, round, isReplay);
     }
-  }
-
-  function showReplayButton(away, home, round) {
-  const replayButton = document.getElementById("replayButton");
-
-  replayButton.classList.remove("hidden"); // Show the button
-
-  // Clear old handlers to avoid stacking
-  const newButton = replayButton.cloneNode(true);
-  replayButton.parentNode.replaceChild(newButton, replayButton);
-
-  newButton.addEventListener("click", () => {
-    simulateMatch(home, away, round, true); // Trigger replay match
-    newButton.classList.add("hidden"); // Hide again after click
   });
-}
-
-  // Calculate and display prize money
-  const prize = calculatePrizeMoney(homeName, winnerKey, round);
-  document.querySelector("#ticketHome p").textContent = `$${prize.home.toLocaleString()}`;
-  document.querySelector("#ticketAway p").textContent = `$${prize.away.toLocaleString()}`;
-
-  // Update result text and show modal
-  document.getElementById('reportResult').innerText = resultText;
-  document.getElementById('matchReportModal').classList.remove('hidden');
-  document.getElementById('matchSetupContainer').classList.add('blurred');
-}
 
   closeBtn.addEventListener('click', () => {
     matchReport.classList.add('hidden');
     matchSetup.classList.remove('blurred');
   });
+
+  function simulateMatch(homeName, awayName, round, isReplay = false) {
+    const homeBadge = teams[homeName].badge;
+    const awayBadge = teams[awayName].badge;
+
+    const homeStars = parseStars(teams[homeName].stars);
+    const awayStars = parseStars(teams[awayName].stars);
+
+    const homeGoals = rollGoals(homeStars, 'home');
+    const awayGoals = rollGoals(awayStars, 'away');
+
+    // Add bonus goals for international stars
+    const homeBonus = calculateBonus('home');
+    const awayBonus = calculateBonus('away');
+
+    const finalHomeGoals = homeGoals + homeBonus;
+    const finalAwayGoals = awayGoals + awayBonus;
+
+    // Update match report UI
+    document.getElementById('reportRound').innerText = `FA Cup ${round}${isReplay ? ' Replay' : ''} Result`;
+    document.getElementById('reportHomeBadge').src = homeBadge;
+    document.getElementById('reportAwayBadge').src = awayBadge;
+    document.getElementById('reportHomeName').innerText = homeName.toUpperCase();
+    document.getElementById('reportAwayName').innerText = awayName.toUpperCase();
+    document.getElementById('reportScore').innerText = `${finalHomeGoals} - ${finalAwayGoals}`;
+
+    // Determine match result
+    let winnerKey;
+    let resultText;
+    const knockoutRounds = ['Semi Final', 'Final'];
+
+    if (finalHomeGoals > finalAwayGoals) {
+      winnerKey = "home";
+      resultText = `${homeName} progress to the next round`;
+    } else if (finalAwayGoals > finalHomeGoals) {
+      winnerKey = "away";
+      resultText = `${awayName} progress to the next round`;
+    } else {
+      if (knockoutRounds.includes(round) || isReplay) {
+        const winner = Math.random() < 0.5 ? homeName : awayName;
+        winnerKey = (winner === homeName) ? "home" : "away";
+        resultText = `End of 90 minutes – ${winner} win on penalties${isReplay ? '' : ''}`;
+      } else {
+        winnerKey = "draw";
+        resultText = `Match Drawn – Replay Scheduled`;
+        showReplayButton(homeName, awayName, round);
+      }
+    }
+
+    // Calculate and display gate revenue money
+    const prize = calculatePrizeMoney(homeName, winnerKey, round);
+    document.querySelector("#ticketHome p").textContent = `$${prize.home.toLocaleString()}`;
+    document.querySelector("#ticketAway p").textContent = `$${prize.away.toLocaleString()}`;
+
+    // Calculate and display round bonus money
+    let homeBonusAmount = 0;
+let awayBonusAmount = 0;
+
+// No round bonus if Quarter Final ends in a draw (before replay)
+if (!(round === 'Quarter Final' && winnerKey === 'draw' && !isReplay)) {
+  homeBonusAmount = calculateRoundBonus(round, teams[homeName].stars);
+  awayBonusAmount = calculateRoundBonus(round, teams[awayName].stars);
+}
+
+document.querySelector("#prizeHome p").textContent = `$${homeBonusAmount.toLocaleString()}`;
+document.querySelector("#prizeAway p").textContent = `$${awayBonusAmount.toLocaleString()}`;
+
+    // Calculate and display TV bonus money
+    const tvBonus = calculateTVBonus(homeStars, awayStars, round, isReplay);
+document.querySelector("#tvHome p").textContent = `$${tvBonus.home.toLocaleString()}`;
+document.querySelector("#tvAway p").textContent = `$${tvBonus.away.toLocaleString()}`;
+
+    // Update total earnings
+    updateTotaliser();
+
+    // Final UI updates
+    document.getElementById('reportResult').innerText = resultText;
+    document.getElementById('matchReportModal').classList.remove('hidden');
+    document.getElementById('matchSetupContainer').classList.add('blurred');
+  }
+
+  function showReplayButton(away, home, round) {
+    const replayButton = document.getElementById("replayButton");
+    replayButton.classList.remove("hidden");
+
+    // Remove old listeners
+    const newButton = replayButton.cloneNode(true);
+    replayButton.parentNode.replaceChild(newButton, replayButton);
+
+    newButton.addEventListener("click", () => {
+      simulateMatch(home, away, round, true);
+      newButton.classList.add("hidden");
+    });
+  }
+
+  function updateTotaliser() {
+    const getAmount = (selector) => {
+      const text = document.querySelector(selector).textContent.replace(/[^\d]/g, '');
+      return Number(text) || 0;
+    };
+
+    const homeTotal = getAmount('#ticketHome p') + getAmount('#prizeHome p') + getAmount('#tvHome p');
+    const awayTotal = getAmount('#ticketAway p') + getAmount('#prizeAway p') + getAmount('#tvAway p');
+
+    document.querySelector('#totalHome p').textContent = `$${homeTotal.toLocaleString()}`;
+    document.querySelector('#totalAway p').textContent = `$${awayTotal.toLocaleString()}`;
+  }
 });
 
 function parseStars(starString) {
   return starString.replace(/[^★]/g, '').length; // Only count "★" symbols
 }
+
 
 
 // Add dice probability here
@@ -720,6 +783,20 @@ function calculatePrizeMoney(homeTeam, winner, round) {
   };
 }
 
+function calculateRoundBonus(round, stars) {
+  const starNum = parseStars(stars); // convert "★★★" to 3
+
+  const bonusMatrix = {
+    "Quarter Final": { 3: 2000, 2: 4000, 1: 6000 },
+    "Semi Final":    { 3: 4000, 2: 8000, 1: 12000 }
+  };
+
+  if (bonusMatrix[round]) {
+    return bonusMatrix[round][starNum] || 0;
+  }
+  return 0;
+}
+
 const homePayoutElement = document.querySelector("#ticketHome p");
 const awayPayoutElement = document.querySelector("#ticketAway p");
 
@@ -730,6 +807,34 @@ const prize = calculatePrizeMoney(homeName, awayName, winnerKey, selectedRound);
 
 homePayoutElement.textContent = `$${prize.home.toLocaleString()}`;
 awayPayoutElement.textContent = `$${prize.away.toLocaleString()}`;
+
+// Calculate TV Bonus Money
+
+function calculateTVBonus(homeStars, awayStars, round, isReplay = false) {
+  let homeBonus = 0;
+  let awayBonus = 0;
+
+  const isKnockout = (round === 'Semi Final' || round === 'Final');
+
+  // Rule 1: 1-star at home vs 3-star away (except for Semi/Final)
+  if (!isKnockout && homeStars === 1 && awayStars === 3) {
+    homeBonus += 1000;
+    awayBonus += 1000;
+  }
+
+  // Rule 2: All Semi Final and Final matches get TV bonus
+  if (isKnockout) {
+    homeBonus += 1000;
+    awayBonus += 1000;
+  }
+
+  return {
+    home: homeBonus,
+    away: awayBonus
+  };
+}
+
+
 
 
 
@@ -742,6 +847,8 @@ function enableSimulateButton() {
   const simulateButton = document.getElementById('simulateButton');
   simulateButton.disabled = !(homeSelected && awaySelected && roundSelected);
 }
+
+updateTotaliser();
 
 
 </script>
