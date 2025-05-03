@@ -19,6 +19,7 @@ body {
       --main-dark: #00061B;
       --main-light: #011338;
       --text-colour: white;
+      --border: #062151;
 
     }
 
@@ -108,7 +109,7 @@ body {
 
 
     border-radius: 10px;
-    border: 5px solid #062151;
+    border: 5px solid var(--border);
 
     font-size: 14px;
     text-align: center;
@@ -118,7 +119,7 @@ body {
   }
   
   .key-player-checkbox, .key-player-checkbox-away {
-    border: 1px solid #062151;
+    border: 1px solid var(--border);
     width: 200px;
     border-radius: 5px;
     margin: none;
@@ -185,7 +186,7 @@ body {
   .simulate-btn:hover {
     background-color: var(--text-colour);
     color: var(--main-dark);
-    border: 3px solid #062151;
+    border: 3px solid var(--border);
   }
 
   .match-details-money {
@@ -207,8 +208,8 @@ body {
     height: 20px;
     margin-bottom: 10px; 
   }
-
-  svg  {
+  
+  .svg  {
     fill: #00061B;
   }
 
@@ -293,7 +294,7 @@ body {
   }
   
 input[type="checkbox"]:checked + label {
-    background-color: #062151;
+    background-color: var(--main-light);
     padding: 5px 50px;
     border-radius: 2px;
   }
@@ -323,7 +324,7 @@ input[type="checkbox"]:checked + label {
     border-radius: 10px;
     color: var(--text-colour);
     box-sizing: border-box;
-    border: 5px solid #062151;
+    border: 5px solid var(--border);
 }
 
 .content  {
@@ -364,18 +365,18 @@ input[type="checkbox"]:checked + label {
 }
 
 #replayButton, #closeReport {
-  background-color: #011338;
+  background-color: var(--main-dark);
   color: var(--text-colour);
-  border: 2px solid #062151;
+  border: 2px solid var(--border);
   padding: 10px;
   border-radius: 5px;
   margin: 10px;
 }
 
 #replayButton:hover, #closeReport {
-  background-color: #062151;
+  background-color: var(--main-light);
   color: var(--text-colour);
-  border: 2px solid #062151;
+  border: 2px solid var(--border);
   padding: 10px;
   border-radius: 5px;
   margin: 10px;
@@ -424,7 +425,7 @@ input[type="checkbox"]:checked + label {
   border-radius: 4px;
   font-size: 12px;
   line-height: 1.5;
-  border: 1px solid #062151;
+  border: 1px solid var(--border);
   
   position: absolute;
   top: 100%;

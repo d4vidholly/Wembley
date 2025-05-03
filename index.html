@@ -819,7 +819,7 @@ function calculateTVBonus(homeStars, awayStars, round, isReplay = false) {
   // Rule 1: 1-star at home vs 3-star away (except for Semi/Final)
   if (!isKnockout && homeStars === 1 && awayStars === 3) {
     homeBonus += 1000;
-    awayBonus += 1000;
+    awayBonus += 0;
   }
 
   // Rule 2: All Semi Final and Final matches get TV bonus
