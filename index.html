@@ -52,19 +52,25 @@
             <option value="Carlisle">Carlisle</option>
             <option value="Charlton Ath">Charlton Ath</option>
             <option value="Chelsea">Chelsea</option>
+            <option value="Exeter">Exeter City</option>
+            <option value="Fulham">Fulham</option>
+            <option value="Hereford">Hereford</option>
             <option value="Hull City">Hull City</option>
             <option value="Liverpool">Liverpool</option>
             <option value="Leeds Utd">Leeds Utd</option>
             <option value="Man City">Man City</option>
             <option>Man Utd</option>
             <option>Newcastle</option>
+            <option value="Nottm Forest">Nottm Forest</option>
             <option value="Port Vale">Port Vale</option>
             <option value="Portsmouth">Portsmouth</option>
             <option value="Reading">Reading</option>
+            <option value="Rochdale">Rochdale</option>
             <option value="Shrewsbury">Shrewsbury</option>
             <option value="Southend">Southend</option>
             <option value="Tottenham">Tottenham</option>
             <option>Tow Law</option>
+            <option value="Watford">Watford</option>
             <option value="West Brom">West Brom</option>
             <option value="West Ham">West Ham</option>
             <option value="Wimbledon">Wimbledon</option>
@@ -194,19 +200,25 @@
             <option value="Carlisle">Carlisle</option>
             <option value="Charlton Ath">Charlton Ath</option>
             <option value="Chelsea">Chelsea</option>
+            <option value="Exeter">Exeter City</option>
+            <option value="Fulham">Fulham</option>
+            <option value="Hereford">Hereford</option>
             <option value="Hull City">Hull City</option>
             <option value="Liverpool">Liverpool</option>
             <option value="Leeds Utd">Leeds Utd</option>
             <option value="Man City">Man City</option>
             <option>Man Utd</option>
             <option>Newcastle</option>
+            <option value="Nottm Forest">Nottm Forest</option>
             <option value="Port Vale">Port Vale</option>
             <option value="Portsmouth">Portsmouth</option>
             <option value="Reading">Reading</option>
+            <option value="Rochdale">Rochdale</option>
             <option value="Shrewsbury">Shrewsbury</option>
             <option value="Southend">Southend</option>
             <option value="Tottenham">Tottenham</option>
             <option>Tow Law</option>
+            <option value="Watford">Watford</option>
             <option value="West Brom">West Brom</option>
             <option value="West Ham">West Ham</option>
             <option value="Wimbledon">Wimbledon</option>
@@ -402,7 +414,10 @@
           "Carlisle": { badge: "carlisle.svg", division: "Third Division", stars: "★", stadium: "Brunton Park", gate: "$900", location: "North East" },
           "Charlton Ath": { badge: "charlton-athletic.svg", division: "Third Division", stars: "★", stadium: "The Valley", gate: "$1500", location: "London" },
           "Bournemouth": { badge: "bournemouth.svg", division: "Third Division", stars: "★", stadium: "Vitality Stadium", gate: "$900", location: "South Coast" },
+          "Exeter": { badge: "exeter.svg", division: "Third Division", stars: "★", stadium: "St James Park", gate: "$1500", location: "" },
           "Reading": { badge: "reading.svg", division: "Third Division", stars: "★", stadium: "Madjeski Stadium", gate: "$2400", location: "London" },
+          "Hereford": { badge: "hereford.svg", division: "Third Division", stars: "★", stadium: "Edgar Street", gate: "$1500", location: "Hereford" },
+          "Fulham": { badge: "fulham.svg", division: "Third Division", stars: "★", stadium: "Craven Cottage", gate: "$2400", location: "London" },
           "Portsmouth": { badge: "portsmouth.svg", division: "Third Division", stars: "★", stadium: "Fratton Park", gate: "$2400", location: "South Coast" },
           "Port Vale": { badge: "port-vale.svg", division: "Third Division", stars: "★", stadium: "Vale Park", gate: "$1500", location: "Midlands" },
           "Southend": { badge: "southend.svg", division: "Third Division", stars: "★", stadium: "Roots Hall", gate: "$1500", location: "London" },
@@ -413,9 +428,12 @@
           "Wolves": { badge: "wolves.svg", division: "Premier Division", stars: "★★★", stadium: "Molineux", gate: "$9000", location: "West Midlands" },
           "West Brom": { badge: "west-brom.svg", division: "Premier Division", stars: "★★★", stadium: "Hawthorns", gate: "$9000", location: "West Midlands" },
           "West Ham": { badge: "west-ham.svg", division: "Championship", stars: "★★", stadium: "London Stadium", gate: "$4500", location: "London" },
+          "Watford": { badge: "watford.svg", division: "Championship", stars: "★★", stadium: "Vicarage Road", gate: "$4500", location: "London" },
+          "Nottm Forest": { badge: "nottm-forest.svg", division: "Championship", stars: "★★", stadium: "City Ground", gate: "$4500", location: "Midlands" },
+          "Rochdale": { badge: "rochdale.svg", division: "Third Division", stars: "★", stadium: "Spotlands", gate: "$900", location: "" },
           "Newcastle": { badge: "newcastle.svg", division: "Championship", stars: "★★", stadium: "St James Park", gate: "$6000", location: "North East" },
           "Wimbledon": { badge: "wimbledon.svg", division: "Third Division", stars: "★", stadium: "Plough Lane", gate: "$2400", location: "London" },
-          "Tow Law": { badge: "tow-law.svg", division: "Non League", stars: "★", stadium: "Ironworks Road", gate: "$900", location: "North East" }
+          "Tow Law": { badge: "tow-law.svg", division: "Third Division", stars: "★", stadium: "Ironworks Road", gate: "$900", location: "North East" }
         };
       
         teamSelectHome.addEventListener('change', updateHomeTeamUI);
@@ -488,8 +506,8 @@ const kickOffTime = document.getElementById('kickOffTime');
 const roundData = {
   "Round of 32": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "15:00 - Day", stadium: "",},
   "Round of 16": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "19:45 - Night", stadium: ""},
-  "Quarter Final": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "19:45 - Night", stadium: ""},
-  "Semi Final": {revenue: "$30000", ifDraw: "Penalty Shoot Out if Draw", kickoff: "12:30 - Day", stadium: "Wembley"},
+  "Quarter Final": {revenue: "-", ifDraw: "Replay if Draw", kickoff: "15:00 - Day", stadium: ""},
+  "Semi Final": {revenue: "$30000", ifDraw: "Penalty Shoot Out if Draw", kickoff: "15:00 - Day", stadium: "Wembley"},
   "Final": {revenue: "$75000", ifDraw: "Penalty Shoot Out if Draw", kickoff: "15:00 - Day", stadium: "Wembley"}
 };
 
