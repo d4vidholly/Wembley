@@ -160,15 +160,7 @@
   
           </div>
 
-        <div class="money-item">
 
-          <img class="icon tooltip" id="prize-icon" src="icon-prize.svg" alt="icon prize" width="20">  
-
-        <div id="ticketRevenueContainer">
-          <p id="ticketRevenue"></p>
-        </div>
-
-      </div>
       </div>
       </div> 
 
@@ -502,7 +494,6 @@
 
  // Round select logic
         const roundSelect = document.getElementById('roundSelect');
-const ticketRevenue = document.getElementById('ticketRevenue');
 const ifDraw = document.getElementById('ifDraw');
 const kickOffTime = document.getElementById('kickOffTime');
 
@@ -520,11 +511,9 @@ function updateRoundUI() {
   const selectedRound = roundSelect.value;
   
   if (roundData[selectedRound]) {
-    ticketRevenue.innerText = roundData[selectedRound].revenue;
     ifDraw.innerText = roundData[selectedRound].ifDraw;
     kickOffTime.innerText = roundData[selectedRound].kickoff;
   } else {
-    ticketRevenue.innerText = "-";
     ifDraw.innerText = "-";
     kickOffTime.innerText = "-";
   }
