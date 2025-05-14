@@ -52,7 +52,7 @@
             <option value="Carlisle">Carlisle</option>
             <option value="Charlton Ath">Charlton Ath</option>
             <option value="Chelsea">Chelsea</option>
-            <option value="Crystal Palace">Crystal Palace</option>
+            <option value="C Palace">C Palace</option>
             <option value="Exeter">Exeter City</option>
             <option value="Fulham">Fulham</option>
             <option value="Hereford">Hereford</option>
@@ -193,7 +193,7 @@
             <option value="Carlisle">Carlisle</option>
             <option value="Charlton Ath">Charlton Ath</option>
             <option value="Chelsea">Chelsea</option>
-            <option value="Crystal Palace">Crystal Palace</option>
+            <option value="C Palace">C Palace</option>
             <option value="Exeter">Exeter City</option>
             <option value="Fulham">Fulham</option>
             <option value="Hereford">Hereford</option>
@@ -401,7 +401,7 @@
           "Man Utd": { badge: "man-utd.svg", division: "Premier Division", stars: "★★★", stadium: "Old Trafford", gate: "$15000", location: "North-West" },
           "Liverpool": { badge: "liverpool.svg", division: "Premier Division", stars: "★★★", stadium: "Anfield", gate: "$15000", location: "North-West" },
           "Chelsea": { badge: "chelsea.svg", division: "Championship", stars: "★★", stadium: "Stamford Bridge", gate: "$6000", location: "London" },
-          "Crystal Palace": { badge: "crystal-palace.svg", division: "Premier Division", stars: "★★★", stadium: "Selhurst Park", gate: "$6000", location: "London" },
+          "C Palace": { badge: "crystal-palace.svg", division: "Premier Division", stars: "★★★", stadium: "Selhurst Park", gate: "$6000", location: "London" },
           "Hull City": { badge: "hull-city.svg", division: "Third Division", stars: "★", stadium: "KC Stadium", gate: "$2400", location: "Yorkshire" },
           "Bristol City": { badge: "bristol-city.svg", division: "Championship", stars: "★★", stadium: "Ashton Gate", gate: "$3000", location: "Midlands" },
           "Blackpool": { badge: "blackpool.svg", division: "Third Division", stars: "★", stadium: "Bloomfield Road", gate: "$2400", location: "North West" },
@@ -600,28 +600,34 @@ function calculateBonus(team) {
     document.getElementById('reportAwayName').innerText = awayName.toUpperCase();
     document.getElementById('reportScore').innerText = `${finalHomeGoals} - ${finalAwayGoals}`;
 
-    // Determine match result
-    let winnerKey;
-    let resultText;
-    const knockoutRounds = ['Semi Final', 'Final'];
+// Determine match result
+let winnerKey;
+let resultText;
+const knockoutRounds = ['Semi Final', 'Final'];
 
-    if (finalHomeGoals > finalAwayGoals) {
-      winnerKey = "home";
-      resultText = `${homeName} progress to the next round`;
-    } else if (finalAwayGoals > finalHomeGoals) {
-      winnerKey = "away";
-      resultText = `${awayName} progress to the next round`;
-    } else {
-      if (knockoutRounds.includes(round) || isReplay) {
-        const winner = Math.random() < 0.5 ? homeName : awayName;
-        winnerKey = (winner === homeName) ? "home" : "away";
-        resultText = `End of 90 minutes – ${winner} win on penalties${isReplay ? '' : ''}`;
-      } else {
-        winnerKey = "draw";
-        resultText = `Match Drawn – Replay Scheduled`;
-        showReplayButton(homeName, awayName, round);
-      }
-    }
+if (finalHomeGoals > finalAwayGoals) {
+  winnerKey = "home";
+  resultText = (round === 'Final') 
+    ? `${homeName} win the FA Cup!` 
+    : `${homeName} progress to the next round`;
+} else if (finalAwayGoals > finalHomeGoals) {
+  winnerKey = "away";
+  resultText = (round === 'Final') 
+    ? `${awayName} win the FA Cup!` 
+    : `${awayName} progress to the next round`;
+} else {
+  if (knockoutRounds.includes(round) || isReplay) {
+    const winner = Math.random() < 0.5 ? homeName : awayName;
+    winnerKey = (winner === homeName) ? "home" : "away";
+    resultText = (round === 'Final') 
+      ? `End of 90 minutes – ${winner} win the FA Cup on penalties` 
+      : `End of 90 minutes – ${winner} win on penalties${isReplay ? '' : ''}`;
+  } else {
+    winnerKey = "draw";
+    resultText = `Match Drawn – Replay Scheduled`;
+    showReplayButton(homeName, awayName, round);
+  }
+}
 
     // Calculate and display gate revenue money
     const prize = calculatePrizeMoney(homeName, winnerKey, round);
