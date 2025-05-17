@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph (used by Facebook, LinkedIn, Discord, etc.) -->
+<meta property="og:title" content="Wembley – Match Simulatior">
+<meta property="og:description" content="Simulate your own FA Cup results.">
+<meta property="og:image" content="Wembley-social.png"> <!-- optional -->
+<meta property="og:url" content="https://d4vidholly.github.io/Wembley.com">
+<meta property="og:type" content="website">
+
   <title>Wembley Board Game - Match Simulator</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +52,7 @@
 
           <select class="team-select" id="teamSelectHome">
             <div class="option-list">
-            <option value="Arsenal">Arsenal</option>
+            <option value="Arsenal" selected>Arsenal</option>
             <option value="Barnsley">Barnsley</option>
             <option value="Blackpool">Blackpool</option>
             <option value="Bournemouth">Bournemouth</option>
@@ -210,7 +218,7 @@
             <option value="Rochdale">Rochdale</option>
             <option value="Shrewsbury">Shrewsbury</option>
             <option value="Southend">Southend</option>
-            <option value="Tottenham">Tottenham</option>
+            <option value="Tottenham" selected>Tottenham</option>
             <option>Tow Law</option>
             <option value="Watford">Watford</option>
             <option value="West Brom">West Brom</option>
