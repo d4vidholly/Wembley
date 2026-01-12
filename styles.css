@@ -23,6 +23,16 @@ body {
 
     }
 
+.header {
+  display: flex;
+  justify-content: center; /* horizontal centre */
+  align-items: center;     /* vertical centre */
+}
+
+.wembley-logo {
+  min-height: 100px;
+}
+
  label {
       cursor: pointer;
     }
@@ -47,7 +57,7 @@ body {
       }
   
   header {
-    height: 40px;
+    height: 50px;
     backdrop-filter: blur(5px);
     padding: 20px;
     color: var(--text-colour);
@@ -56,15 +66,10 @@ body {
     font-weight: bold;
   }
 
-  header img  {
-    position: fixed;
-    right: 100px;
-    height: 30px;
-  }
+  .wembley-logo {
+  max-height: 100px;
+}
 
-  header img:hover  {
-    cursor: pointer;
-  }
 
 
 
