@@ -405,6 +405,16 @@ html, body {
   overflow-x: hidden;
 }
 
+body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background-image: url('wembley-dark.png');;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
+
 
  .round-select {
     display: flex;
