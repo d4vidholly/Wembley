@@ -447,3 +447,82 @@ footer  {
   visibility: visible;
   opacity: 1;
 }
+
+/* =========================
+   MOBILE OVERRIDES ONLY
+========================= */
+
+@media (max-width: 767px) {
+
+
+ .round-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+
+  /* Stack main match area */
+  .match-area {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* Stack teams */
+  .teams {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Full-width team panels */
+  .team-panel {
+    width: 100%;
+    min-width: unset;
+    min-height: unset;
+  }
+
+  /* Force DOM order */
+  .team-panel.home {
+    order: 1;
+  }
+
+  .team-panel.away {
+    order: 3;
+  }
+
+  /* Hide match details entirely */
+  .match-details,
+  .match-details-money {
+    display: none !important;
+  }
+
+
+  /* Shrink logos */
+  .team-panel img {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Buttons full width */
+  .simulate-btn {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  /* Modal becomes full screen */
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .match-result {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
