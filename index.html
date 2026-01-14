@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Simulate match results and calculate winnings with the Wembley Board Game Companion">
+<meta name="description" content="The only companion app for the Wembley board game. Track matches, scores, and results in real time for a smoother, more immersive game experience.">
+
 
   <meta property="og:title" content="Wembley – Match Simulator">
   <meta property="og:description" content="Simulate your own FA Cup results.">
@@ -11,7 +12,7 @@
   <meta property="og:url" content="https://d4vidholly.github.io/Wembley/">
   <meta property="og:type" content="website">
 
-  <title>Wembley Board Game - Match Simulator</title>
+  <title>Wembley Board Game Companion App</title>
 
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
@@ -106,6 +107,7 @@
             <option>Wrexham</option>
             </div>
           </select>
+          
           </div>
 
           <div class="mobile-hidden">
@@ -148,9 +150,6 @@
         <!-- Round Select -->
         
         <div class="match-details">
-
-
-        
 
         <div class="match-details-stadium">
           <img class="icon" id="stadium-icon" src="icon-stadium.svg" alt="icon stadium" width="20">
@@ -308,7 +307,7 @@
 
         <div class="home-result result">
 
-          <div class="mobile-row">
+          <div class="mobile-row-score">
           <img id="reportHomeBadge" src="arsenal.svg" alt="Home Team Badge" width="100">
           <div>
           <p id="reportHomeName"></p>
@@ -324,7 +323,7 @@
         <p id="reportScore" class="mobile-hidden"></p>
 
         <div class="away-result result">
-          <div class="mobile-row">
+          <div class="mobile-row-score">
         <img id="reportAwayBadge" src="arsenal.svg" alt="Away Team Badge" width="100">
           <div>
           <p id="reportAwayName"></p>
@@ -415,10 +414,16 @@
       <span id="reportResult"></span>
     
     </h3>
+
+    <div class="button-wrapper">
+
+    
     
     <button class="report-button" id="closeReport" onclick="closeModal()">NEW MATCH</button>
 
     <button class="report-button" id="replayButton" class="hidden">REPLAY MATCH</button>
+
+</div>
 
   </div>
 
