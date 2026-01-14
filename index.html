@@ -24,27 +24,47 @@
 </head>
 <body>
 
- <header>
+  <header>
   <img class="wembley-logo" src="wembley_logo_white.png">
-
   </header>
-
 
   <div id="matchSetupContainer">
 
+    
+
   <div class="container">
+
+    <div class="round-select">
+
+          <select class="round-dropdown" id="roundSelect">
+            <option value="Round of 32">Round of 32</option>
+            <option value="Round of 16">Round of 16</option>
+            <option value="Quarter Final">Quarter Final</option>
+            <option value="Semi Final">Semi Final</option>
+            <option value="Final">Final</option>
+          </select>
+        </div>
     
     <div class="match-area">
+
+      
       
       <div class="teams">
         
         <!-- Home Team Panel -->
         <div class="team-panel">
+           <div class="team-panel-home">
           <div>Home</div>
+
+        <div class="mobile-row">
+
           <img id="teamBadgeHome" src="arsenal.svg" alt="Home Team Badge" width="100">
 
+
+          <div class="mobile-hidden">
           <div id="starContainerHome" style="display: none;"></div>
           <div id="divisionTextHome"></div>
+          </div>
 
           <select class="team-select" id="teamSelectHome">
             <div class="option-list">
@@ -64,7 +84,7 @@
             <option value="Liverpool">Liverpool</option>
             <option value="Leeds Utd">Leeds Utd</option>
             <option value="Man City">Man City</option>
-            <option>Man Utd</option>
+            <option value="Man Utd"> Man Utd</option>
             <option>Newcastle</option>
             <option value="Nottm Forest">Nottm Forest</option>
             <option value="Port Vale">Port Vale</option>
@@ -82,42 +102,42 @@
             <option value="Wimbledon">Wimbledon</option>
             <option>Wolves</option>
             <option>Wrexham</option>
-          </div>
+            </div>
           </select>
+          </div>
 
-          <div class="Key-Player-Toggle">
+          <div class="mobile-hidden">
 
-            <div class="key-player-checkbox" >
-
-              <div class="international-stars tooltip">
-                <p>Select International Stars:</p>
-                <span class="tooltip-text">International Stars can be added to your team to improve your odds.
-                  <br>
-                  <br>
-                  Goalkeeper: +1 Goal
-                  <br>
-                  Defender: +1 Goal
-                  <br>
-                  Midfielder: +1 Goal
-                  <br>
-                  Striker: +1 Goal
-                </span>
+            <div class="Key-Player-Toggle">
+              <div class="key-player-checkbox" >
+                <div class="international-stars tooltip">
+                  <p>Select International Stars:</p>
+                    <span class="tooltip-text">International Stars can be added to your team to improve your odds.
+                    <br>
+                    <br>
+                    Goalkeeper: +1 Goal
+                    <br>
+                    Defender: +1 Goal
+                    <br>
+                    Midfielder: +1 Goal
+                    <br>
+                    Striker: +1 Goal
+                    </span>
+                </div>
+                <div class="home-team-stars">
+                <input type="checkbox" id="position1" name="position1" value="Goalkeeper">
+                <label for="position1"> Goalkeeper</label><br>
+                <input type="checkbox" id="position2" name="position2" value="Defender">
+                <label for="position2"> Defender</label><br>
+                <input type="checkbox" id="position3" name="position3" value="Midfielder">
+                <label for="position3"> Midfielder</label><br>
+                <input type="checkbox" id="position4" name="position4" value="Striker">
+                <label for="position4"> Striker</label><br>
+                </div>
               </div>
-
-              <div class="home-team-stars">
-
-              <input type="checkbox" id="position1" name="position1" value="Goalkeeper">
-              <label for="position1"> Goalkeeper</label><br>
-              <input type="checkbox" id="position2" name="position2" value="Defender">
-              <label for="position2"> Defender</label><br>
-              <input type="checkbox" id="position3" name="position3" value="Midfielder">
-              <label for="position3"> Midfielder</label><br>
-              <input type="checkbox" id="position4" name="position4" value="Striker">
-              <label for="position4"> Striker</label><br>
-            
             </div>
-            
             </div>
+         
           </div>
           
 
@@ -128,16 +148,7 @@
         <div class="match-details">
 
 
-        <div class="round-select">
-
-          <select class="round-dropdown" id="roundSelect">
-            <option value="Round of 32">Round of 32</option>
-            <option value="Round of 16">Round of 16</option>
-            <option value="Quarter Final">Quarter Final</option>
-            <option value="Semi Final">Semi Final</option>
-            <option value="Final">Final</option>
-          </select>
-        </div>
+        
 
         <div class="match-details-stadium">
           <img class="icon" id="stadium-icon" src="icon-stadium.svg" alt="icon stadium" width="20">
@@ -182,13 +193,20 @@
       
         <!-- Away Team Panel -->
         <div class="team-panel">
+          <div class="team-panel-away">
           <div>Away</div>
-          <img id="teamBadgeAway" src="arsenal.svg" alt="Away Team Badge" width="100">
 
+          <div class="mobile-row">
+
+          <img id="teamBadgeAway" src="arsenal.svg" alt="Away Team Badge" width="100">
+          
+
+          <div class="mobile-hidden">
           <div id="starContainerAway" style="display: none;"> </div>
           <div id="divisionTextAway"></div>
+          </div>
 
-          <select class=team-select id="teamSelectAway">
+          <select class="team-select" id="teamSelectAway">
             <option value="Arsenal">Arsenal</option>
             <option value="Barnsley">Barnsley</option>
             <option value="Blackpool">Blackpool</option>
@@ -226,39 +244,38 @@
             
           </select>
 
-          <div class="Key-Player-Toggle">
+          </div>
 
-            <div class="key-player-checkbox-away">
-
-              <div class="international-stars tooltip">
-                <p>Select International Stars:</p>
-                <span class="tooltip-text">International Stars can be added to your team to improve your odds.
-                  <br>
-                  <br>
-                  Goalkeeper: +1 Goal
-                  <br>
-                  Defender: +1 Goal
-                  <br>
-                  Midfielder: +1 Goal
-                  <br>
-                  Striker: +1 Goal
-                </span>
+          <div class="mobile-hidden">
+            <div class="Key-Player-Toggle">
+              <div class="key-player-checkbox-away">
+                <div class="international-stars tooltip">
+                  <p>Select International Stars:</p>
+                    <span class="tooltip-text">International Stars can be added to your team to improve your odds.
+                    <br>
+                    <br>
+                    Goalkeeper: +1 Goal
+                    <br>
+                    Defender: +1 Goal
+                    <br>
+                    Midfielder: +1 Goal
+                    <br>
+                    Striker: +1 Goal
+                    </span>
                 </div>
-
-              <div class="away-team-stars">
-
-              <input type="checkbox" id="position1-away" name="position1-away" value="Goalkeeper">
-              <label for="position1-away"> Goalkeeper</label><br>
-              <input type="checkbox" id="position2-away" name="position2-away" value="Defender">
-              <label for="position2-away"> Defender</label><br>
-              <input type="checkbox" id="position3-away" name="position3-away" value="Midfielder">
-              <label for="position3-away"> Midfielder</label><br>
-              <input type="checkbox" id="position4-away" name="position4-away" value="Striker">
-              <label for="position4-away"> Striker</label><br>
-            
+                <div class="away-team-stars">
+                  <input type="checkbox" id="position1-away" name="position1-away" value="Goalkeeper">
+                  <label for="position1-away"> Goalkeeper</label><br>
+                  <input type="checkbox" id="position2-away" name="position2-away" value="Defender">
+                  <label for="position2-away"> Defender</label><br>
+                  <input type="checkbox" id="position3-away" name="position3-away" value="Midfielder">
+                  <label for="position3-away"> Midfielder</label><br>
+                  <input type="checkbox" id="position4-away" name="position4-away" value="Striker">
+                  <label for="position4-away"> Striker</label><br>
+                </div>
+              </div>
             </div>
-
-            </div>
+          </div>
           </div>
 
         </div>
@@ -271,103 +288,123 @@
       </div>
 
     
-<footer>
-  
-  <div class="banner">
-    <div class="copyright">Designed and Developed by David Holly</div>
-  </div>
-</footer>
+
 
 </div>
 
 <div id="matchReportModal" class="modal hidden">
   <div class="modal-content">
     <div class="content">
+      <div class="content-headings">
     <h2>Match Report</h2>
+    
     <p id="reportRound"></p>
 
+    </div>
+
       <div class="match-result">
-      <div class="home-result result">
-      <img id="reportHomeBadge" src="arsenal.svg" alt="Home Team Badge" width="100">
-      <div>
-        <p id="reportHomeName"></p>
-        </div>
+
+        <div class="home-result result">
+
+          <div class="mobile-row">
+          <img id="reportHomeBadge" src="arsenal.svg" alt="Home Team Badge" width="100">
+          <div>
+          <p id="reportHomeName"></p>
+          </div>
+
+          <div>
+          <p id="reportScoreHome"></p>
+          </div>
+
+          </div>
         </div>
 
-      <p id="reportScore"></p>
+        <p id="reportScore" class="mobile-hidden"></p>
 
-      <div class="away-result result">
-      <img id="reportAwayBadge" src="arsenal.svg" alt="Away Team Badge" width="100">
+        <div class="away-result result">
+          <div class="mobile-row">
+        <img id="reportAwayBadge" src="arsenal.svg" alt="Away Team Badge" width="100">
+          <div>
+          <p id="reportAwayName"></p>
+          </div>
+
+          <div>
+          <p id="reportScoreAway"></p>
+          </div>
+
+          </div>
+        </div>
+
+      </div>
+
+  <p>Match Earnings</p>
+
+  <div class="mobile-hidden">
+
+    <div class="match-result">
+      <div id="ticketHome">
+      <p></p>
+      </div>
+    
       <div>
-        <p id="reportAwayName"></p>
+      <img id="ticket-icon" src="icon-ticket.svg" alt="ticket" width="20">
+      </div>
+
+      <div id="ticketAway">
+      <p></p>
+      </div>
+  </div>
+
+  <div class="match-result">
+
+      <div id="prizeHome">
+      <p></p>
+      </div>
+    
+      <div>
+      <img id="prize-icon" src="icon-prize.svg" alt="prize" width="20">
+      </div>
+
+      <div id="prizeAway">
+      <p></p>
+      </div>
+  </div>
+
+  <div class="match-result">
+
+      <div id="tvHome">
+      <p></p>
+      </div>
+    
+      <div>
+      <img id="tv-icon" src="icon-tv.svg" alt="tv" width="20">
+      </div>
+
+      <div id="tvAway">
+      <p></p>
+      </div>
+  </div>
+
+  </div>
+
+  <div class="match-result">
+
+    <div class="mobile-row">
+
+      <div id="totalHome">
+      <b><p></p></b>
+      </div>
+    
+      <div>
+      <b>Total</b>
+      </div>
+
+      <div id="totalAway">
+      <b><p></p></b>
       </div>
     </div>
 
   </div>
-
-  <p>Match Earnings</p>
-
-  <div class="match-result">
-
-    <div id="ticketHome">
-      <p></p>
-    </div>
-    
-    <div>
-      <img id="ticket-icon" src="icon-ticket.svg" alt="ticket" width="20">
-    </div>
-
-    <div id="ticketAway">
-      <p></p>
-    </div>
-  </div>
-
-  <div class="match-result">
-
-    <div id="prizeHome">
-      <p></p>
-    </div>
-    
-    <div>
-      <img id="prize-icon" src="icon-prize.svg" alt="prize" width="20">
-    </div>
-
-    <div id="prizeAway">
-      <p></p>
-    </div>
-  </div>
-
-  <div class="match-result">
-
-    <div id="tvHome">
-      <p></p>
-    </div>
-    
-    <div>
-      <img id="tv-icon" src="icon-tv.svg" alt="tv" width="20">
-    </div>
-
-    <div id="tvAway">
-      <p></p>
-    </div>
-  </div>
-
-  <div class="match-result">
-
-    <div id="totalHome">
-      <b><p></p></b>
-    </div>
-    
-    <div>
-      <b>Total</b>
-    </div>
-
-    <div id="totalAway">
-      <b><p></p></b>
-    </div>
-  </div>
-
-
 
     <h3>
       

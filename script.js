@@ -211,6 +211,11 @@ function calculateBonus(team) {
     document.getElementById('reportHomeName').innerText = homeName.toUpperCase();
     document.getElementById('reportAwayName').innerText = awayName.toUpperCase();
     document.getElementById('reportScore').innerText = `${finalHomeGoals} - ${finalAwayGoals}`;
+    document.getElementById('reportScoreHome').innerText = `${finalHomeGoals}`;
+    document.getElementById('reportScoreAway').innerText = `${finalAwayGoals}`;
+    
+
+    
 
 // Determine match result
 let winnerKey;

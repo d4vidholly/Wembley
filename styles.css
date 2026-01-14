@@ -1,6 +1,8 @@
 html body  {
   margin: 0;
   padding: 0;
+      height: 100vh;
+    overflow: hidden; /* kills all scrolling */
 }
 
 body {
@@ -23,15 +25,15 @@ body {
 
     }
 
-.header {
-  display: flex;
-  justify-content: center; /* horizontal centre */
-  align-items: center;     /* vertical centre */
-}
+      header {
+    text-align: center;
 
-.wembley-logo {
-  min-height: 100px;
-}
+  }
+
+    .wembley-logo {
+      margin-top: 20px;
+      max-height: 100px;
+    }
 
  label {
       cursor: pointer;
@@ -49,32 +51,9 @@ body {
         margin-bottom: 10px;
       }
 
-    .team-panel {
-        width: 48%;
-        min-width: 200px;
-        padding: 10px;
-        text-align: center;
-      }
   
-  header {
-    height: 50px;
-    backdrop-filter: blur(5px);
-    padding: 20px;
-    color: var(--text-colour);
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .wembley-logo {
-  max-height: 100px;
-}
-
-
-
-
   .container {
-    margin: 65px auto;
+    margin: 0px auto;
     padding: 40px;
     max-width: 900px;
     min-width: 350px;
@@ -95,10 +74,6 @@ body {
     min-width: 300px;
   }
 
-
-
-
-
   .team-panel {
     position: relative;
     background: linear-gradient(45deg, var(--main-dark), var(--main-light));
@@ -106,22 +81,23 @@ body {
     width: 32%;
     min-width: 150px;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-
-
     border-radius: 10px;
     border: 5px solid var(--border);
-
     font-size: 14px;
     text-align: center;
     align-items: center;
     min-height: 300px;
 
   }
+
+  #reportScoreHome, #reportScoreAway  {
+    display: none;
+  }
+
   
   .key-player-checkbox, .key-player-checkbox-away {
     border: 1px solid var(--border);
@@ -130,17 +106,6 @@ body {
     margin: none;
   }
 
-  .banner {
-    height: 50px;
-
-    color: white;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center; 
-  }
-  
   .team-panel img {
     border-radius: 50%;
     width: 100px;
@@ -158,9 +123,6 @@ body {
     margin-bottom: 10px;
   }
 
-.round-dropdown {
-  text-transform: uppercase;
-}
 
   .round-select select {
     padding: 10px;
@@ -214,9 +176,6 @@ body {
     margin-bottom: 10px; 
   }
   
-  .svg  {
-    fill: #00061B;
-  }
 
 #ifDraw {
   margin: 0;
@@ -232,6 +191,7 @@ body {
     text-align: center;
     overflow-y: auto;
     max-height: 100px;
+    min-width: 200px;
     max-width: 100%;
   }
   
@@ -282,11 +242,6 @@ body {
     border: none;
   }
 
-  .fa-cup-logo  {
-    margin: 0;
-    max-height: 50px;
-  }
-
   input[type="checkbox"] {
     appearance: none;
     margin-left: -20px;
@@ -303,6 +258,8 @@ input[type="checkbox"]:checked + label {
     padding: 5px 50px;
     border-radius: 2px;
   }
+
+   /* Modal */
 
   .hidden {
     display: none !important;
@@ -344,14 +301,6 @@ input[type="checkbox"]:checked + label {
   align-items: center;
   gap: 80px;
 }
-
-.home-team-stars, .away-team-stars  {
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-
-
 
 .home-result, .away-result  {
   display: flex;
@@ -398,8 +347,6 @@ input[type="checkbox"]:checked + label {
 
 }
 
-
-
 #divisionTextHome, #divisionTextAway {
   margin-bottom: 5px;
 }
@@ -414,9 +361,6 @@ input[type="checkbox"]:checked + label {
   cursor: help;
 }
 
-.copyright  {
-  color: var(--text-colour);
-}
 
 
 .tooltip-text {
@@ -431,7 +375,6 @@ input[type="checkbox"]:checked + label {
   font-size: 12px;
   line-height: 1.5;
   border: 1px solid var(--border);
-  
   position: absolute;
   top: 100%;
   left: 0;
@@ -443,16 +386,16 @@ footer  {
   bottom: 0;
 }
 
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
-}
-
 /* =========================
    MOBILE OVERRIDES ONLY
 ========================= */
 
 @media (max-width: 767px) {
+
+    html, body {
+    height: 100vh;
+    overflow: hidden; /* kills all scrolling */
+  }
 
 
  .round-select {
@@ -503,8 +446,8 @@ footer  {
 
   /* Shrink logos */
   .team-panel img {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
   }
 
   /* Buttons full width */
@@ -515,8 +458,8 @@ footer  {
 
   /* Modal becomes full screen */
   .modal-content {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     border-radius: 0;
   }
 
@@ -524,5 +467,59 @@ footer  {
     flex-direction: column;
     gap: 30px;
   }
+
+    .mobile-hidden  {
+    display: none !important;
+  }
+
+  .mobile-row {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between badge and select */
+  }
+
+  #teamBadgeHome {
+    display: block;
+  }
+
+  .team-select  {
+    height: 50px;
+    min-width: 300px !important;
+  }
+
+   .simulate-btn {
+    max-width: 300px;
+  }
+
+#reportHomeBadge, #reportAwayBadge {
+  height: 50px;
+}
+
+#reportScoreHome, #reportScoreAway  {
+    display: block;
+      font-size: 24px;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  }
+
+#reportScore  {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#reportNameHome, #reportNameAway {
+  margin: 0;
+}
+
+
+.content-headings {
+  font-size: 16px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
 }
 
