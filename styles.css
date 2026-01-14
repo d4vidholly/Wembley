@@ -239,6 +239,12 @@ body {
     font-size: 12px;
   }
 
+  .content-headings {
+  font-size: 16px;
+  margin: 0 auto;
+  text-align: center;
+}
+
   .team-select:focus  {
     border: none;
   }
@@ -281,7 +287,7 @@ input[type="checkbox"]:checked + label {
 
 .modal-content {
     max-width: 90%;
-    width: 800px;
+    width: 600px;
     background: linear-gradient(45deg, var(--main-dark), var(--main-light));
     padding: 30px;
     border-radius: 10px;
@@ -502,19 +508,24 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
+  max-height: 50px;      /* or whatever feels right */
 }
+
 
 #reportHomeBadge,
 #reportAwayBadge {
   width: 40px;
   flex-shrink: 0;
   margin-right: 12px;
+
 }
 
 #reportHomeName,
 #reportAwayName {
   flex: 1;
   text-align: left;
+
+    font-size: 32px;
   
 }
 
@@ -525,6 +536,9 @@ body {
   text-align: right;
   font-weight: bold;
   display: block;
+
+      margin-left: 50px;
+          font-size: 32px;
 }
 
 
@@ -545,11 +559,7 @@ body {
 
 
 
-.content-headings {
-  font-size: 16px;
-  margin: 0 auto;
-  text-align: center;
-}
+
 
 
 }
