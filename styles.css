@@ -1,8 +1,8 @@
 html body  {
   margin: 0;
   padding: 0;
-      height: 100vh;
-    overflow: hidden; /* kills all scrolling */
+  height: 100vh;
+  overflow: hidden; /* kills all scrolling */
 }
 
 body {
@@ -26,12 +26,13 @@ body {
     }
 
       header {
+
     text-align: center;
 
   }
 
     .wembley-logo {
-      margin-top: 20px;
+      margin-top: 40px;
       max-height: 100px;
     }
 
@@ -484,7 +485,7 @@ footer  {
 
   .team-select  {
     height: 50px;
-    min-width: 300px !important;
+    max-width: 200px !important;
   }
 
    .simulate-btn {
