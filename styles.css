@@ -393,10 +393,18 @@ footer  {
 
 @media (max-width: 767px) {
 
-    html, body {
-    height: 100vh;
-    overflow: hidden; /* kills all scrolling */
-  }
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow-x: hidden;
+}
 
 
  .round-select {
@@ -457,10 +465,9 @@ footer  {
     font-size: 18px;
   }
 
-  /* Modal becomes full screen */
   .modal-content {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     border-radius: 0;
   }
 
